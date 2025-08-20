@@ -47,7 +47,7 @@ const Footer = () => {
       <p className="footer-copyright">
         &copy; 2025 | All rights reserved. Made by{" "}
         <a
-          href="https://ahmed12g4.github.io/My-Portfolio12/"
+          href="https://ahmed12g4.github.io/My-Portfolio/"
           target="_blank"
           rel="noreferrer"
         >

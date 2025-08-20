@@ -46,7 +46,7 @@ const PlaceOrder = () => {
               <p>${getTotalCartAmount() + 2}</p>
             </div>
           </div>
-          <button>
+          <button type="submit" >
             PROCEED TO PAYMENT
           </button>
         </div>
