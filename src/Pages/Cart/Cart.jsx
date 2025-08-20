@@ -1,12 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../Context/StoreContext";
 import { useNavigate } from "react-router-dom";
+
 const Cart = () => {
   const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
     useContext(StoreContext);
-  
+
   const navigate = useNavigate();
+
+  const [promoCode, setPromoCode] = useState("");
+  const [promoMessage, setPromoMessage] = useState("");
+  const [promoSuccess, setPromoSuccess] = useState(false);
+
+  const handelClickPromo = (e) => {
+    e.preventDefault();
+
+    if (promoCode.trim() === "") {
+      setPromoMessage("⚠️ Please enter a valid promo code");
+      setPromoSuccess(false);
+    } else if (promoCode.trim().toUpperCase() === "DISCOUNT10") {
+      setPromoMessage("✅ Promo code applied! You got 10% off");
+      setPromoSuccess(true);
+    } else {
+      setPromoMessage("❌ Invalid promo code");
+      setPromoSuccess(false);
+    }
+  };
 
   return (
     <div className="cart">
@@ -21,10 +41,10 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item, index) => {
+        {food_list.map((item) => {
           if (cartItems[item._id] > 0) {
             return (
-              <div>
+              <div key={item._id}>
                 <div className="cart-items-title cart-items-item">
                   <img src={item.image} alt="" />
                   <p>{item.name}</p>
@@ -70,9 +90,23 @@ const Cart = () => {
           <div>
             <p>If you have a promo code, Enter it here</p>
             <div className="cart-promocode-input">
-              <input type="text" placeholder="promo code" />
-              <button>Submit</button>
+              <input
+                type="text"
+                placeholder="promo code"
+                value={promoCode}
+                onChange={(e) => setPromoCode(e.target.value)}
+              />
+              <button onClick={handelClickPromo}>Submit</button>
             </div>
+            {promoMessage && (
+              <p
+                className={
+                  promoSuccess ? "promocode-success" : "promocode-error"
+                }
+              >
+                {promoMessage}
+              </p>
+            )}
           </div>
         </div>
       </div>

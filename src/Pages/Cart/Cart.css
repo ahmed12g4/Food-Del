@@ -101,6 +101,19 @@
     cursor: pointer;
 }
 
+.promocode-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.promocode-success {
+  color: green;
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
 @media (max-width:750px) {
     .cart-bottom {
         flex-direction: column-reverse;
