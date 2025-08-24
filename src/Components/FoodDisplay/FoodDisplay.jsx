@@ -15,7 +15,7 @@ const FoodDisply = ({ category }) => {
               <div
                 key={item._id}
                 data-aos="zoom-in"
-                data-aos-delay={index * 50} // تأخير تدريجي لكل طبق
+                data-aos-delay={index * 30} // تأخير تدريجي لكل طبق
               >
                 <FoodItem
                   id={item._id}
