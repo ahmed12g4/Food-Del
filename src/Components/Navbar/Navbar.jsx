@@ -7,8 +7,12 @@ import { StoreContext } from "../../Context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
+  const [profile, setProfile] = useState("")
 
   const { getTotalCartAmount } = useContext(StoreContext);
+
+
+
 
   return (
     <div className="navbar">
